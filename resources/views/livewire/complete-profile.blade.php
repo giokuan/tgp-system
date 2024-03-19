@@ -4,6 +4,13 @@
         <div class="mt-4 border-2 border-blue-400 rounded-lg xl:mx-14">
             <div class="mt-10 font-bold text-center">Complete your Profile</div>
 
+            <div class="pl-2">
+                <x-mary-file wire:model="photo" accept="image/png, image/jpeg">
+                    <img src="{{ 'storage/uploads/default.jpg' }}" class="h-40 rounded-lg" />
+                </x-mary-file>
+            </div>
+
+
             <div class="p-2">
                 <div class="flex flex-col gap-2 xl:flex-row">
                     <input type="text" wire:model="last_name" name="last_name"
@@ -110,8 +117,8 @@
 
 
 
-                            <select wire:model="selectedProvince" wire:change="setSelectedProvince($event.target.value)"
-                                name="selectedProvince"
+                            <select wire:model="selectedProvince"
+                                wire:change="setSelectedProvince($event.target.value)" name="selectedProvince"
                                 class="w-full px-3 py-4 text-gray-500 bg-white border rounded-md shadow-sm border-slate-300 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm">
                                 <option value="">Select Province</option>
                                 @foreach ($provinces as $province => $data)
@@ -168,6 +175,7 @@
                         <span class="error">{{ $message }}</span>
                     @enderror
                 </div>
+
 
                 <div class="text-center ">
                     <button type="submit"

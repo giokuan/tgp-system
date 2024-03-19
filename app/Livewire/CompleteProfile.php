@@ -8,10 +8,12 @@ use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Mary\Traits\Toast;
+use Livewire\WithFileUploads;
 
 class CompleteProfile extends Component
 {
     use Toast;
+    use WithFileUploads;
 
     #[Validate('required')]
     public $last_name="";
@@ -71,6 +73,9 @@ class CompleteProfile extends Component
     public $user;
     public $memberId;
 
+    #[Validate('image|max:1024')] // 1MB Max
+    public $photo;
+
 
 
 
@@ -92,6 +97,8 @@ class CompleteProfile extends Component
 
     // dd($this->all());
     $user = auth()->user()->id;
+
+    $photo = $this->photo->store('uploads', 'public');
 
 
         Member::create([
@@ -115,6 +122,7 @@ class CompleteProfile extends Component
             'province'=> $this->selectedProvince,
             'municipality'=> $this->selectedMunicipality,
             'barangay'=> $this->selectedBarangay,
+            'photo'=> $photo,
           
            
             

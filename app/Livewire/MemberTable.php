@@ -18,9 +18,14 @@ use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
+
+
+
 final class MemberTable extends PowerGridComponent
 {
     use WithExport;
+  
+  
 
 
     public function setUp(): array
@@ -38,15 +43,16 @@ final class MemberTable extends PowerGridComponent
         ];
     }
 
-    public function getProfilePhotoUrl($user_Id)
-{
-    $user = User::find($user_Id);
-    if ($user && $user->profile_photo_path) {
-        return $user->profile_photo_path;
-    } else {
-        return null;
-    }
-}
+    //     public function getProfilePhotoUrl($user_Id)
+    // {
+    //     $user = User::find($user_Id);
+    
+    //     if ($user && $user->profile_photo_path) {
+    //         return asset('storage/profile-photos/' . $user->profile_photo_path);
+    //     } else {
+    //         return null;
+    //     }
+    // }
 
 
     public function datasource(): Builder
@@ -64,33 +70,16 @@ final class MemberTable extends PowerGridComponent
     {
         return PowerGrid::fields()
             ->add('id')
-            // ->add('user.profile_photo_path', fn (Member $model) => $this->getProfilePhotoUrl($model->user_id))
-            // ->add('user.profile_photo_path', fn (Member $model) => '<img src="' . $this->getProfilePhotoUrl($model->user_id) . '" alt="Photo" width="50" height="50">')
-            // ->add('user.profile_photo_path', fn (Member $model) => '<img src="' . asset($this->getProfilePhotoUrl($model->user_id)) . '" alt="Photo" width="50" height="50">')
+
+
             // ->add('user.profile_photo_path', function (Member $model) {
-            //     $photoUrl = $this->getProfilePhotoUrl($model->user_id);
-            //     Log::info('Generated photo URL: ' . $photoUrl);
+            //     $photoUrl = $model->user->profile_photo_path;
             //     if ($photoUrl) {
-            //         $photoUrl = asset('storage/profile-photos/' . $photoUrl);
-            //         return '<img src="' . $photoUrl . '" alt="Photo" width="50" height="50">';
+            //         return '<img src="' . asset($photoUrl) . '" alt="Photo" width="50" height="50">';
             //     } else {
             //         return 'No photo available';
             //     }
             // })
-
-            ->add('user.profile_photo_path', function (Member $model) {
-                $photoUrl = $model->user->profile_photo_path;
-                if ($photoUrl) {
-                    return '<img src="' . asset($photoUrl) . '" alt="Photo" width="50" height="50">';
-                } else {
-                    return 'No photo available';
-                }
-            })
-
-            
-            
-            
-            
             
             ->add('last_name')
             ->add('first_name')
@@ -121,9 +110,9 @@ final class MemberTable extends PowerGridComponent
         return [
             Column::make('Id', 'id'),
 
-            Column::make('Profile Photo', 'user.profile_photo_path')
-            ->sortable()
-            ->searchable(),
+            // Column::make('Profile Photo', 'user.profile_photo_path')
+            // ->sortable()
+            // ->searchable(),
             
             Column::make('Member id', 'member_id')
             ->sortable()
@@ -226,18 +215,29 @@ final class MemberTable extends PowerGridComponent
     #[\Livewire\Attributes\On('edit')]
     public function edit($rowId): void
     {
-        $this->js('alert('.$rowId.')');
+        // $this->js('alert('.$rowId.')');
+        $this->js('window.location.href = "/edit-profile/' . $rowId . '";');
     }
 
     public function actions(Member $row): array
     {
         return [
             Button::add('edit')
-                // ->slot('Edit: '.$row->id)
                 ->slot('Edit')
                 ->id()
                 ->class('py-1 px-4 bg-blue-500 text-sm rounded pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id])
+                ->dispatch('edit', ['rowId' => $row->id]),
+            
+               
+
+                
+
+                Button::add('View')
+                // ->slot('Edit: '.$row->id)
+                ->slot('View')
+                ->id()
+                ->class('py-1 px-4 bg-success text-sm rounded pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
+                ->dispatch('view', ['rowId' => $row->id])
         ];
     }
 

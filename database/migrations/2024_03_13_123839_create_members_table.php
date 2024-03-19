@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('municipality');
             $table->string('barangay');
             $table->text('address');
+            $table->string('photo', 2048)->nullable();
             $table->timestamps();
         });
     }

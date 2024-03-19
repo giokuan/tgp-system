@@ -1,11 +1,6 @@
 @inject('actionRulesClass', 'PowerComponents\LivewirePowerGrid\Components\Rules\RulesController')
 
-<x-livewire-powergrid::table-base
-    :ready-to-load="$readyToLoad"
-    :theme="$theme"
-    :table-name="$tableName"
-    :lazy="!is_null(data_get($setUp, 'lazy'))"
->
+<x-livewire-powergrid::table-base :ready-to-load="$readyToLoad" :theme="$theme" :table-name="$tableName" :lazy="!is_null(data_get($setUp, 'lazy'))">
     <x-slot:header>
         @include('livewire-powergrid::components.table.tr')
     </x-slot:header>
@@ -53,28 +48,18 @@
                     @endphp
 
                     @if (isset($setUp['detail']))
-                        <tbody
-                            wire:key="tbody-{{ $rowId }}"
-                            {{ $trAttributesBag }}
-                            x-data="{ detailState: @entangle('setUp.detail.state.' . $rowId) }"
-                        >
+                        <tbody wire:key="tbody-{{ $rowId }}" {{ $trAttributesBag }} x-data="{ detailState: @entangle('setUp.detail.state.' . $rowId) }">
                             @include('livewire-powergrid::components.row', [
                                 'rowIndex' => $loop->index + 1,
                             ])
-                            <tr
-                                x-show="detailState"
-                                style="{{ data_get($theme, 'table.trBodyStyle') }}"
-                                {{ $trAttributesBag }}
-                            >
+                            <tr x-show="detailState" style="{{ data_get($theme, 'table.trBodyStyle') }}"
+                                {{ $trAttributesBag }}>
                                 @include('livewire-powergrid::components.table.detail')
                             </tr>
                         </tbody>
                     @else
-                        <tr
-                            wire:key="tbody-{{ $rowId }}"
-                            style="{{ data_get($theme, 'table.trBodyStyle') }}"
-                            {{ $trAttributesBag }}
-                        >
+                        <tr wire:key="tbody-{{ $rowId }}" style="{{ data_get($theme, 'table.trBodyStyle') }}"
+                            {{ $trAttributesBag }}>
                             @include('livewire-powergrid::components.row', [
                                 'rowIndex' => $loop->index + 1,
                             ])
@@ -92,21 +77,12 @@
                             $take = data_get($setUp, 'lazy.rowsPerChildren');
                         @endphp
 
-                        <livewire:lazy-child
-                            key="{{ $this->getLazyKeys }}"
-                            :child-index="$item"
-                            :$primaryKey
-                            :$radio
-                            :$radioAttribute
-                            :$checkbox
-                            :$checkboxAttribute
-                            :$theme
-                            :$setUp
-                            :$tableName
-                            :parentName="$this->getName()"
-                            :columns="$this->visibleColumns"
-                            :data="\PowerComponents\LivewirePowerGrid\ProcessDataSource::transform($data->skip($skip)->take($take), $this)"
-                        />
+                        <livewire:lazy-child key="{{ $this->getLazyKeys }}" :child-index="$item" :$primaryKey :$radio
+                            :$radioAttribute :$checkbox :$checkboxAttribute :$theme :$setUp :$tableName
+                            :parentName="$this->getName()" :columns="$this->visibleColumns" :data="\PowerComponents\LivewirePowerGrid\ProcessDataSource::transform(
+                                $data->skip($skip)->take($take),
+                                $this,
+                            )" />
                     @endforeach
                 </div>
             @endif

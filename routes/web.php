@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,6 +24,15 @@ Route::middleware([
     Route::get('/member', function () {
         return view('member');
     })->name('member');
+
+// Route::get('/member-table', MemberTable::class)->name('member');
+
+
+Route::get('edit-profile/{id}', function () {
+    return view('edit-profile');
+})->name('edit-profile');
+
+
 
     Route::get('/profile-complete', function () {
         return view('profile-complete');

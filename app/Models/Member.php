@@ -32,6 +32,7 @@ class Member extends Model
         'municipality',
         'barangay',
         'address',
+        'photo'
     ];
 
     public function user()
@@ -39,4 +40,5 @@ class Member extends Model
         return $this->belongsTo(User::class);
     }
 
+ 
 }
