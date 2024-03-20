@@ -1,7 +1,7 @@
-@import "./../../vendor/power-components/livewire-powergrid/dist/tailwind.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./../../vendor/power-components/livewire-powergrid/dist/tailwind.css";
 
 [x-cloak] {
     display: none;
