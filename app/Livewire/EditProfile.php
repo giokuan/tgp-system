@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Member;
 use Illuminate\Support\Facades\Storage;
-use Livewire\Attributes\Validate;
+
 use Livewire\WithFileUploads;
 use Mary\Traits\Toast;
 
@@ -35,11 +35,17 @@ class EditProfile extends Component
     public $batch_name;
     public $t_birth;
 
+    public $user_type;
+
     public $gt;
     public $current_chapter;
     public $root_chapter;
     public $status;
     public $address;
+
+    public $photoPath;
+
+    
 
     
 
@@ -53,6 +59,7 @@ class EditProfile extends Component
         $this->regions = json_decode($json, true);
         
         $this->members = Member::where('user_id', auth()->user()->id)->first();
+        
         // dd($this->members);
         $this->user_id = $this->members->user_id;
         $this->member_id = $this->members->member_id;
@@ -68,7 +75,9 @@ class EditProfile extends Component
         $this->current_chapter = $this->members->current_chapter;
         $this->root_chapter = $this->members->root_chapter;
         $this->status = $this->members->status;
+        $this->user_type = $this->members->user_type;
         $this->address = $this->members->address;
+        $this->photo = $this->members->photo;
 
         
         
@@ -127,18 +136,21 @@ class EditProfile extends Component
     {
         
         
-        $member = Member::where('user_id', auth()->user()->id)->first();
+        $members = Member::where('user_id', auth()->user()->id)->first();
 
-        if ($member->photo && $this->photo) {
-            Storage::delete($member->photo);
+        $photoPath = $members->photo;;
+
+        if ($this->photo && $this->members->photo) {
+            Storage::delete('public/' . $this->members->photo);
         }
+      
 
-        
-        if ($this->photo) {
+        if ($this->photo instanceof \Illuminate\Http\UploadedFile && $this->photo->isValid()) {
             $photoPath = $this->photo->store('uploads', 'public');
         }
-
-        $member->update([
+       
+ 
+        $members->update([
             'user_id' => $this->user_id,
             'member_id' => $this->member_id,
             'first_name' => $this->first_name,
@@ -152,7 +164,8 @@ class EditProfile extends Component
             'current_chapter' => $this->current_chapter,
             'root_chapter' => $this->root_chapter,
             'status' => $this->status,
-            'photo' => $photoPath ?? $member->photo,
+            'user_type' => $this->user_type,
+            'photo' => $photoPath,
             'region' => $this->selectedRegion,
             'province' => $this->selectedProvince,
             'municipality' => $this->selectedMunicipality,

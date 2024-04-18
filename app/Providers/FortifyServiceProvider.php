@@ -13,9 +13,13 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\LoginResponse;
-use Laravel\Fortify\Contracts\LogoutResponse;
+use Laravel\Fortify\Contracts\RegisterResponse;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Member;
+
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Support\Facades\Event;
+
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -37,13 +41,21 @@ class FortifyServiceProvider extends ServiceProvider
             }
         });
 
+        $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
+            public function toResponse($request)
+            {
+                
 
-        // $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
-        //     public function toResponse($request)
-        //     {
-        //         return redirect('/');
-        //     }
-        // });
+                if (Member::where('user_id', Auth::id())->exists()) {
+                    return redirect()->route('dashboard');
+                } else{
+                    return redirect()->route('profile-complete');
+                }
+            }
+        });
+
+
+  
     }
 
     /**
@@ -65,5 +77,11 @@ class FortifyServiceProvider extends ServiceProvider
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
+
+
+        Event::listen(Verified::class, function ($event) {
+            return redirect()->route('verification.notice');
+        });
+        
     }
 }

@@ -219,6 +219,13 @@ final class MemberTable extends PowerGridComponent
         $this->js('window.location.href = "/edit-profile/' . $rowId . '";');
     }
 
+    #[\Livewire\Attributes\On('view')]
+    public function view($rowId): void
+    {
+        // $this->js('alert('.$rowId.')');
+        $this->js('window.location.href = "/profile-view/' . $rowId . '";');
+    }
+
     public function actions(Member $row): array
     {
         return [
@@ -226,18 +233,18 @@ final class MemberTable extends PowerGridComponent
                 ->slot('Edit')
                 ->id()
                 ->class('py-1 px-4 bg-blue-500 text-sm rounded pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id]),
+                ->dispatch('edit', ['rowId' => $row->member_id]),
             
                
 
                 
 
-                Button::add('View')
+                Button::add('view')
                 // ->slot('Edit: '.$row->id)
                 ->slot('View')
                 ->id()
                 ->class('py-1 px-4 bg-success text-sm rounded pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('view', ['rowId' => $row->id])
+                ->dispatch('view', ['rowId' => $row->member_id])
         ];
     }
 

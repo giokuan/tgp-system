@@ -1,19 +1,29 @@
 <div class="md:mx-36">
     <x-mary-toast />
-    <form wire:submit="updateProfile" method="POST">
+    <form wire:submit="updateProfile" method="POST" enctype="multipart/form-data">
         <div class="mt-4 border-2 border-blue-400 rounded-lg xl:mx-14">
             <div class="mt-10 font-bold text-center">Complete your Profile</div>
 
 
             <div class="pl-2">
 
-                <x-mary-file wire:model="photo">
+                <x-mary-file wire:model="photo" name="photo">
                     <img src="{{ asset('storage/' . $members->photo) }}" class="h-40 rounded-lg" />
                 </x-mary-file>
 
+                {{-- <x-mary-file wire:model="photo" name="photo">
+                    <!-- Image preview -->
+                    @if ($photo)
+                        <img src="{{ $photo->temporaryUrl() }}" class="h-40 rounded-lg" />
+                    @elseif ($members->photo)
+                        <img src="{{ asset('storage/' . $members->photo) }}" class="h-40 rounded-lg" />
+                    @endif
+                </x-mary-file> --}}
+
+
                 <input type="hidden" wire:model="member_id" value="{{ $members->member_id }}" />
-                {{-- <input wire:model="user_id" name="user_id" value="{{ $members->user_id }}" /> --}}
-                <input type="hidden" wire:model="user_id" name="user_id" value="{{ $user_id }}" />
+                <input type="hidden" wire:model="id" name="id" value="{{ $members->id }}" />
+                <input type="hidden" wire:model="user_id" name="user_id" value="{{ $members->user_id }}" />
 
 
             </div>
@@ -191,7 +201,7 @@
 
 
                 </div>
-                <input type="hidden" wire:model="user_type" name="user_type"
+                <input value="{{ $members->user_type }}" type="text" wire:model="user_type" name="user_type"
                     class="block w-full px-3 py-4 mt-1 bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
                     placeholder="User Type" />
                 <div class="my-6">

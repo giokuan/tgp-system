@@ -37,6 +37,10 @@ Route::get('edit-profile/{id}', function () {
     Route::get('/profile-complete', function () {
         return view('profile-complete');
     })->name('profile-complete');
+
+    Route::get('/profile-view/{member_id}', function () {
+        return view('profile-view');
+    })->name('profile-view');
    
    
 });
