@@ -6,7 +6,7 @@
 
             <div class="pl-2">
                 <x-mary-file wire:model="photo" accept="image/png, image/jpeg">
-                    <img src="{{ 'storage/uploads/default.jpg' }}" class="h-40 rounded-lg" />
+                    <img src="{{ 'storage/uploads/default.png' }}" class="h-40 rounded-lg" />
                 </x-mary-file>
             </div>
 

@@ -1,5 +1,5 @@
 <x-app-layout>
     <div class="pt-24">
-        <livewire:complete-profile :members="$id" />
+        <livewire:complete-profile />
     </div>
 </x-app-layout>

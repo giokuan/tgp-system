@@ -136,6 +136,14 @@ class CompleteProfile extends Component
         return redirect()->to('dashboard');
 
     }
+
+    public function CompleteYourProfileFirst(){
+
+        $this->emit('info', "Complete your profile first!", 'Thank you!', 'toast-top toast-center');
+
+    }
+
+
     public function render()
     {
         // return view('livewire.complete-profile');

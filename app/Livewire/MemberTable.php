@@ -58,7 +58,7 @@ final class MemberTable extends PowerGridComponent
     public function datasource(): Builder
     {
         // return Member::query();
-        return Member::query()->with('user');
+        return Member::query()->with('User');
     }
 
     public function relationSearch(): array

@@ -133,50 +133,52 @@ class EditProfile extends Component
 
 
     public function updateProfile()
-    {
-        
-        
-        $members = Member::where('user_id', auth()->user()->id)->first();
+{
+    $member = Member::where('user_id', auth()->user()->id)->first();
 
-        $photoPath = $members->photo;;
+    // Store the current photo path
+    $photoPath = $member->photo;
 
-        if ($this->photo && $this->members->photo) {
-            Storage::delete('public/' . $this->members->photo);
-        }
-      
-
-        if ($this->photo instanceof \Illuminate\Http\UploadedFile && $this->photo->isValid()) {
-            $photoPath = $this->photo->store('uploads', 'public');
-        }
-       
- 
-        $members->update([
-            'user_id' => $this->user_id,
-            'member_id' => $this->member_id,
-            'first_name' => $this->first_name,
-            'middle_name' => $this->middle_name,
-            'email' => $this->email,
-            'phone' => $this->phone,
-            'aka' => $this->aka,
-            'batch_name' => $this->batch_name,
-            't_birth' => $this->t_birth,
-            'gt' => $this->gt,
-            'current_chapter' => $this->current_chapter,
-            'root_chapter' => $this->root_chapter,
-            'status' => $this->status,
-            'user_type' => $this->user_type,
-            'photo' => $photoPath,
-            'region' => $this->selectedRegion,
-            'province' => $this->selectedProvince,
-            'municipality' => $this->selectedMunicipality,
-            'barangay' => $this->selectedBarangay,
-            'address' => $this->address,
-        ]);
-
-        // Display success message
-        $this->success("Profile updated successfully!", 'Thank you!', 'toast-top toast-end');
-        return redirect()->back();
+    // Delete the old photo if a new one is being uploaded
+    if ($this->photo && $this->photo instanceof \Illuminate\Http\UploadedFile && $this->photo->isValid()) {
+        Storage::delete('public/' . $member->photo);
+        $photoPath = $this->photo->store('uploads', 'public');
     }
+
+    // Update member data, excluding photo if it hasn't changed
+    $data = [
+        'user_id' => $this->user_id,
+        'member_id' => $this->member_id,
+        'first_name' => $this->first_name,
+        'middle_name' => $this->middle_name,
+        'email' => $this->email,
+        'phone' => $this->phone,
+        'aka' => $this->aka,
+        'batch_name' => $this->batch_name,
+        't_birth' => $this->t_birth,
+        'gt' => $this->gt,
+        'current_chapter' => $this->current_chapter,
+        'root_chapter' => $this->root_chapter,
+        'status' => $this->status,
+        'user_type' => $this->user_type,
+        'region' => $this->selectedRegion,
+        'province' => $this->selectedProvince,
+        'municipality' => $this->selectedMunicipality,
+        'barangay' => $this->selectedBarangay,
+        'address' => $this->address,
+    ];
+
+    // Only include photo if it has been updated
+    if ($this->photo) {
+        $data['photo'] = $photoPath;
+    }
+
+    $member->update($data);
+
+    // Display success message
+    $this->success("Profile updated successfully!", 'Thank you!', 'toast-top toast-end');
+    return redirect()->back();
+}
 
 
 }

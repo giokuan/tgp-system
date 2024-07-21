@@ -28,7 +28,7 @@ Route::middleware([
 // Route::get('/member-table', MemberTable::class)->name('member');
 
 
-Route::get('edit-profile/{id}', function () {
+Route::get('edit-profile/{member_id}', function () {
     return view('edit-profile');
 })->name('edit-profile');
 
@@ -38,7 +38,7 @@ Route::get('edit-profile/{id}', function () {
         return view('profile-complete');
     })->name('profile-complete');
 
-    Route::get('/profile-view/{member_id}', function () {
+    Route::get('/profile-view', function () {
         return view('profile-view');
     })->name('profile-view');
    

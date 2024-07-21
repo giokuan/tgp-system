@@ -33,14 +33,14 @@
             <div class="p-2">
                 <div class="flex flex-col gap-2 xl:flex-row">
                     <input value="{{ $members->last_name }}" type="text" wire:model="last_name" name="last_name"
-                        class="block w-full px-4 py-4 mt-1 bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm" />
+                        class="block w-full px-4 py-2 mt-1 bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm" />
                     <div>
                         @error('last_name')
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div>
                     <input value="{{ $members->first_name }}" type="text" wire:model="first_name" name="first_name"
-                        class="block w-full px-4 py-4 mt-1 bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
+                        class="block w-full px-4 py-2 mt-1 bg-white border rounded-md shadow-sm border-slate-300 placeholder-slate-400 placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
                         placeholder="First Name" autocomplete="given-name" />
                     <div>
                         @error('first_name')
