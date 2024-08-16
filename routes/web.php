@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -31,6 +32,15 @@ Route::middleware([
 Route::get('edit-profile/{member_id}', function () {
     return view('edit-profile');
 })->name('edit-profile');
+
+
+Route::get('member-view/{member_id}', function () {
+    return view('member-view');
+})->name('member-view');
+
+
+
+
 
 
 

@@ -11,6 +11,7 @@ export default {
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
         "./vendor/robsontenorio/mary/src/View/Components/**/*.php",
+        "./vendor/rappasoft/laravel-livewire-tables/resources/views/**/*.blade.php",
     ],
 
     theme: {

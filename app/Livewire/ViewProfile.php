@@ -59,7 +59,7 @@ class ViewProfile extends Component
 
 public function loadMemberData($member)
 {
-    // $this->member = Member::find($member_id);
+    // $this->member = Member::find($member_id)->first();
     $this->member = Member::where('user_id', auth()->user()->id)->first();
     
     if ($this->member) {
