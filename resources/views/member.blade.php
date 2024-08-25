@@ -2,9 +2,10 @@
 
    
     <div class="pt-24 lg:mx-24">
-        <livewire:member-table />
+        <livewire:member-table  />
     </div>
 
+    
 
 
 </x-app-layout>

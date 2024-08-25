@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
+ 
     
     protected $table ='members';
     protected $fillable = [
@@ -40,5 +41,10 @@ class Member extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function isExternal(): bool
+    {
+        // Your logic here, for example:
+        return $this->status === 'external'; // Assuming 'status' is a column that determines if a member is external.
+    }
  
 }

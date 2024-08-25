@@ -34,11 +34,14 @@ Route::get('edit-profile/{member_id}', function () {
 })->name('edit-profile');
 
 
-Route::get('member-view/{member_id}', function () {
+Route::get('member-view/{rowId}', function () {
     return view('member-view');
 })->name('member-view');
 
 
+// Route::get('view-member/{rowId}', function () {
+//     return view('view-member');
+// })->name('view-member');
 
 
 

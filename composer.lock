@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1be948334339138075e9eff884239c8",
+    "content-hash": "2dd2d57e3889710b0897083a087a2336",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3364,16 +3364,16 @@
         },
         {
             "name": "power-components/livewire-powergrid",
-            "version": "v5.10.0",
+            "version": "v5.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Power-Components/livewire-powergrid.git",
-                "reference": "ea16460f93a743167093391ef254a2038665746b"
+                "reference": "180ca4a1056def54b19ea626f6f0e483848ccf65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Power-Components/livewire-powergrid/zipball/ea16460f93a743167093391ef254a2038665746b",
-                "reference": "ea16460f93a743167093391ef254a2038665746b",
+                "url": "https://api.github.com/repos/Power-Components/livewire-powergrid/zipball/180ca4a1056def54b19ea626f6f0e483848ccf65",
+                "reference": "180ca4a1056def54b19ea626f6f0e483848ccf65",
                 "shasum": ""
             },
             "require": {
@@ -3433,7 +3433,7 @@
             "homepage": "https://github.com/power-components/livewire-powergrid",
             "support": {
                 "issues": "https://github.com/Power-Components/livewire-powergrid/issues",
-                "source": "https://github.com/Power-Components/livewire-powergrid/tree/v5.10.0"
+                "source": "https://github.com/Power-Components/livewire-powergrid/tree/v5.10.4"
             },
             "funding": [
                 {
@@ -3441,7 +3441,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-07-20T20:11:58+00:00"
+            "time": "2024-08-21T19:41:49+00:00"
         },
         {
             "name": "pragmarx/google2fa",
@@ -4213,16 +4213,16 @@
         },
         {
             "name": "rappasoft/laravel-livewire-tables",
-            "version": "v3.4.6",
+            "version": "v3.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rappasoft/laravel-livewire-tables.git",
-                "reference": "1e20fb0b411acbeb85ba082479a0c6928b7f4f55"
+                "reference": "1fd8bb221c41685306542b01152dd595ecbbf2d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rappasoft/laravel-livewire-tables/zipball/1e20fb0b411acbeb85ba082479a0c6928b7f4f55",
-                "reference": "1e20fb0b411acbeb85ba082479a0c6928b7f4f55",
+                "url": "https://api.github.com/repos/rappasoft/laravel-livewire-tables/zipball/1fd8bb221c41685306542b01152dd595ecbbf2d5",
+                "reference": "1fd8bb221c41685306542b01152dd595ecbbf2d5",
                 "shasum": ""
             },
             "require": {
@@ -4282,7 +4282,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rappasoft/laravel-livewire-tables/issues",
-                "source": "https://github.com/rappasoft/laravel-livewire-tables/tree/v3.4.6"
+                "source": "https://github.com/rappasoft/laravel-livewire-tables/tree/v3.4.9"
             },
             "funding": [
                 {
@@ -4290,7 +4290,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-08-16T03:16:34+00:00"
+            "time": "2024-08-21T22:08:30+00:00"
         },
         {
             "name": "robsontenorio/mary",
