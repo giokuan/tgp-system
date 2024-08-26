@@ -101,32 +101,30 @@ class CompleteProfile extends Component
     $photo = $this->photo->store('uploads', 'public');
 
 
-        Member::create([
-            'user_id'=>$user,
-            'member_id'=>$memberId,
-            'last_name'=> $this->last_name,
-            'first_name'=> $this->first_name,
-            'middle_name' => $this->middle_name,
-            't_birth'=> $this->t_birth,
-            'email' => $this->email,
-            'phone'=> $this->phone,
-            'aka'=> $this->aka,
-            'gt'=> $this->gt,
-            'batch_name'=> $this->batch_name,
-            'current_chapter'=> $this->current_chapter,
-            'root_chapter'=> $this->root_chapter,
-            'status'=> $this->status,
-            'user_type'=>$this->user_type,
-            'address'=> $this->address,
-            'region'=> $this->selectedRegion,
-            'province'=> $this->selectedProvince,
-            'municipality'=> $this->selectedMunicipality,
-            'barangay'=> $this->selectedBarangay,
-            'photo'=> $photo,
-          
-           
-            
-        ]);
+    Member::create([
+        'user_id' => $user,
+        'member_id' => $memberId,
+        'last_name' => strtoupper($this->last_name),
+        'first_name' => strtoupper($this->first_name),
+        'middle_name' => strtoupper($this->middle_name),
+        't_birth' => $this->t_birth, // Assuming t_birth does not need to be uppercase
+        'email' => strtoupper($this->email),
+        'phone' => strtoupper($this->phone),
+        'aka' => strtoupper($this->aka),
+        'gt' => strtoupper($this->gt),
+        'batch_name' => strtoupper($this->batch_name),
+        'current_chapter' => strtoupper($this->current_chapter),
+        'root_chapter' => strtoupper($this->root_chapter),
+        'status' => strtoupper($this->status),
+        'user_type' => strtoupper($this->user_type),
+        'address' => strtoupper($this->address),
+        'region' => strtoupper($this->selectedRegion),
+        'province' => strtoupper($this->selectedProvince),
+        'municipality' => strtoupper($this->selectedMunicipality),
+        'barangay' => strtoupper($this->selectedBarangay),
+        'photo' => $photo, // Assuming photo does not need to be uppercase
+    ]);
+    
 
     
         $this->reset();

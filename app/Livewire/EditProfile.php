@@ -149,25 +149,25 @@ class EditProfile extends Component
     $data = [
         'user_id' => $this->user_id,
         'member_id' => $this->member_id,
-        'first_name' => $this->first_name,
-        'middle_name' => $this->middle_name,
-        'email' => $this->email,
-        'phone' => $this->phone,
-        'aka' => $this->aka,
-        'batch_name' => $this->batch_name,
-        't_birth' => $this->t_birth,
-        'gt' => $this->gt,
-        'current_chapter' => $this->current_chapter,
-        'root_chapter' => $this->root_chapter,
-        'status' => $this->status,
-        'user_type' => $this->user_type,
-        'region' => $this->selectedRegion,
-        'province' => $this->selectedProvince,
-        'municipality' => $this->selectedMunicipality,
-        'barangay' => $this->selectedBarangay,
-        'address' => $this->address,
+        'last_name' => strtoupper($this->last_name),
+        'first_name' => strtoupper($this->first_name),
+        'middle_name' => strtoupper($this->middle_name),
+        'email' => strtoupper($this->email),
+        'phone' => strtoupper($this->phone),
+        'aka' => strtoupper($this->aka),
+        'batch_name' => strtoupper($this->batch_name),
+        't_birth' => $this->t_birth, // Assuming t_birth does not need to be uppercase
+        'gt' => strtoupper($this->gt),
+        'current_chapter' => strtoupper($this->current_chapter),
+        'root_chapter' => strtoupper($this->root_chapter),
+        'status' => strtoupper($this->status),
+        'user_type' => strtoupper($this->user_type),
+        'region' => strtoupper($this->selectedRegion),
+        'province' => strtoupper($this->selectedProvince),
+        'municipality' => strtoupper($this->selectedMunicipality),
+        'barangay' => strtoupper($this->selectedBarangay),
+        'address' => strtoupper($this->address),
     ];
-
     // Only include photo if it has been updated
     if ($this->photo) {
         $data['photo'] = $photoPath;

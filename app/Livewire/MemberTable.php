@@ -15,7 +15,7 @@ use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
-use Illuminate\Support\Facades\Session;
+
 
 final class MemberTable extends PowerGridComponent
 {
@@ -77,55 +77,57 @@ final class MemberTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('Id', 'id'),
-            Column::make('Member id', 'member_id')
+            // Column::make('ID', 'id')
+            // ->sortable()
+            //     ->searchable(),
+            Column::make('MEMBER ID', 'member_id')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Last name', 'last_name')
+            Column::make('LAST NAME', 'last_name')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('First name', 'first_name')
+            Column::make('FIRST NAME', 'first_name')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Middle name', 'middle_name')
+            Column::make('MIDDLE NAME', 'middle_name')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('T birth', 't_birth_formatted', 't_birth')
+            Column::make('T BIRTH', 't_birth_formatted', 't_birth')
                 ->sortable(),
 
-            Column::make('Email', 'email')
+            // Column::make('EMAIL', 'email')
+            //     ->sortable()
+            //     ->searchable(),
+
+            Column::make('PHONE', 'phone')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Phone', 'phone')
+            Column::make('AKA', 'aka')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Aka', 'aka')
+            Column::make('GT', 'gt')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Gt', 'gt')
+            Column::make('BATCH NAME', 'batch_name')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Batch name', 'batch_name')
+            Column::make('CURRENT CHAPTER', 'current_chapter')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Current chapter', 'current_chapter')
+            Column::make('ROOT CHAPTER', 'root_chapter')
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Root chapter', 'root_chapter')
-                ->sortable()
-                ->searchable(),
-
-            Column::make('Status', 'status')
+            Column::make('STATUS', 'status')
                 ->sortable()
                 ->searchable(),
 
