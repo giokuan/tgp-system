@@ -4,40 +4,30 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Member;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Log;
+
 
 
 class ViewMember extends Component
 {
 
     
-
-
-    public $memberId;
     public $member;
 
-    public function mount($memberId)
+    public function mount($id)
     {
-        $this->memberId = $memberId;
-        $this->member = Member::find($memberId);
+        $this->member = Member::find($id);
+
+        if (!$this->member) {
+            return redirect()->back()->with('error', 'Member not found.');
+        }
     }
 
     public function render()
     {
+        // Render the Livewire view without the layout method
         return view('livewire.view-member');
     }
 
-
-
-
-
-    // public function render()
-    // {
-       
-       
-    //     return view('livewire.view-member');
-    // }
 }
 
 

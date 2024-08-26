@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\ViewMember;
 
 
 
@@ -26,7 +27,7 @@ Route::middleware([
         return view('member');
     })->name('member');
 
-// Route::get('/member-table', MemberTable::class)->name('member');
+
 
 
 Route::get('edit-profile/{member_id}', function () {
@@ -34,16 +35,15 @@ Route::get('edit-profile/{member_id}', function () {
 })->name('edit-profile');
 
 
-Route::get('member-view/{rowId}', function () {
-    return view('member-view');
+// Route::get('member-view/{id}', function () {
+//     return view('member-view');
+// })->name('member-view');
+
+
+
+Route::get('/member-view/{id}', function ($id) {
+    return view('member-view', compact('id'));
 })->name('member-view');
-
-
-// Route::get('view-member/{rowId}', function () {
-//     return view('view-member');
-// })->name('view-member');
-
-
 
 
 

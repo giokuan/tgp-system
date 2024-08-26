@@ -129,41 +129,7 @@ final class MemberTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            // Column::make('User id', 'user_id'),
-            // Column::make('User type', 'user_type')
-            //     ->sortable()
-            //     ->searchable(),
-
-            // Column::make('Region', 'region')
-            //     ->sortable()
-            //     ->searchable(),
-
-            // Column::make('Province', 'province')
-            //     ->sortable()
-            //     ->searchable(),
-
-            // Column::make('Municipality', 'municipality')
-            //     ->sortable()
-            //     ->searchable(),
-
-            // Column::make('Barangay', 'barangay')
-            //     ->sortable()
-            //     ->searchable(),
-
-            // Column::make('Address', 'address')
-            //     ->sortable()
-            //     ->searchable(),
-
-            // Column::make('Photo', 'photo')
-            //     ->sortable()
-            //     ->searchable(),
-
-            // Column::make('Created at', 'created_at_formatted', 'created_at')
-            //     ->sortable(),
-
-            // Column::make('Created at', 'created_at')
-            //     ->sortable()
-            //     ->searchable(),
+          
 
             Column::action('Action')
         ];
@@ -179,33 +145,28 @@ final class MemberTable extends PowerGridComponent
     #[\Livewire\Attributes\On('edit')]
     public function edit($rowId): void
     {
-   
-        Session::flash('redirectToViewMember', $rowId);
-
-        // Trigger a full page reload
-        $this->redirect('member-view/' . $rowId);
+        $this->redirect(route('member-view', ['id' => $rowId]));
     }
+
+
+
+    
 
     public function actions(Member $row): array
     {
         return [
             Button::add('edit')
-                ->slot('Edit: '.$row->id)
+                ->slot('View')
                 ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
+                ->class('bg-green-500 p-2 rounded-lg dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
                 ->dispatch('edit', ['rowId' => $row->id])
+       
+             
         ];
     }
 
-    /*
-    public function actionRules($row): array
-    {
-       return [
-            // Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
-                ->hide(),
-        ];
-    }
-    */
+    
+
+
 }
+
