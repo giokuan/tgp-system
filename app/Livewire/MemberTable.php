@@ -158,9 +158,9 @@ final class MemberTable extends PowerGridComponent
     {
         return [
             Button::add('edit')
-                ->slot('View')
+                ->slot('VIEW')
                 ->id()
-                ->class('bg-green-500 p-2 rounded-lg dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
+                ->class(' px-8 rounded-lg border p-2 text-black dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
                 ->dispatch('edit', ['rowId' => $row->id])
        
              

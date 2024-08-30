@@ -21,24 +21,26 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
-    <x-banner />
 
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-        @livewire('navigation-menu')
-       
+{{-- <body wire:ignore class="min-h-screen font-sans  bg-fixed bg-center bg-cover "
+    style="background-image: url('storage/images/back-sjmc.webp')" alt="background-photo"> --}}
+
+<body >
+    
+    @livewire('navigation-menu')
+    <div>
 
         {{-- <x-sidebar /> --}}
-
+     
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-white shadow  dark:bg-gray-800">
-                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <header class=" dark:bg-gray-800">
+                <div class=" px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
             </header>
         @endif
-
+ 
         <!-- Page Content -->
         <main>
             {{ $slot }}
