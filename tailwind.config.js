@@ -1,9 +1,10 @@
-import defaultTheme from "tailwindcss/defaultTheme";
-import forms from "@tailwindcss/forms";
-import typography from "@tailwindcss/typography";
+const defaultTheme = require("tailwindcss/defaultTheme");
+const forms = require("@tailwindcss/forms");
+const typography = require("@tailwindcss/typography");
+const daisyui = require("daisyui");
 
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
     darkMode: "class",
     content: [
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
@@ -13,26 +14,44 @@ export default {
         "./vendor/robsontenorio/mary/src/View/Components/**/*.php",
         "./vendor/rappasoft/laravel-livewire-tables/resources/views/**/*.blade.php",
     ],
-
     theme: {
+        screens: {
+            xs: "320px",
+            sm: "480px",
+            md: "768px",
+            lg: "976px",
+            xl: "1440px",
+        },
         extend: {
-            fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+            animation: {
+                // adjust speed according to your need
+                marquee: "marquee 40s linear infinite",
+            },
+            keyframes: {
+                marquee: {
+                    "0%": { transform: "translateX(100%)" },
+                    "100%": { transform: "translateX(-200%)" },
+                },
             },
 
-            // keyframes: {
-            //     rotate: {
-            //         "0%": { transform: "perspective(1000px) rotateY(0deg)" },
-            //         "100%": {
-            //             transform: "perspective(1000px) rotateY(360deg)",
-            //         },
-            //     },
-            // },
-            // animation: {
-            //     rotate: "rotate 50s linear infinite",
-            // },
+            keyframes: {
+                roll: {
+                    "0%": { transform: "rotateX(45deg) rotateY(-45deg)" },
+                    "25%": { transform: "rotateX(-45deg) rotateY(-45deg)" },
+                    "50%": { transform: "rotateX(45deg) rotateY(45deg)" },
+                    "75%": { transform: "rotateX(-45deg) rotateY(45deg)" },
+                    "100%": { transform: "rotateX(45deg) rotateY(-45deg)" },
+                },
+            },
+            animation: {
+                roll: "roll 5s infinite",
+            },
         },
     },
-
-    plugins: [forms, typography, require("daisyui")],
+    variants: {
+        extend: {
+            animation: ["hover", "focus"],
+        },
+    },
+    plugins: [forms, typography, daisyui],
 };

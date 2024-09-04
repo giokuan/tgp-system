@@ -8,6 +8,12 @@
     display: none;
 }
 
-body {
-    background-image: url("/storage/images/back-sjmc.png");
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+@layer components {
+    .box {
+        @apply sm:h-[250px] sm:w-[250px] xs:h-[150px] xs:w-[150px] text-center border-2 border-white sm:py-[100px] xs:py-[50px] px-0 text-white bg-black text-3xl box-border absolute [transition:all_1s];
+    }
 }
