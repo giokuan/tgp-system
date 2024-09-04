@@ -27,7 +27,7 @@
                         <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
 
                     @else
-                        <a href="{{ route('login') }}" wire:navigate  class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+                        <a href="{{ route('login') }}" wire:navigate  class="mr-10 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
 
                         {{-- @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
@@ -142,7 +142,7 @@
                         class="box sm:[transform:translateZ(125px)] xs:[transform:translateZ(75px)]">
                         <img
         src="{{asset('storage/sjmc.png')}}"
-        alt="SJMC Logo"
+        alt="SJMC"
         class="flex  w-full items-center justify-center -mt-24 rounded-lg"
         /></div>
                     <div
@@ -151,21 +151,21 @@
                     <div
                         class="box sm:right-[125px] xs:right-[75px] [transform:rotateY(-90deg)]">
                         <img
-                        src="{{asset('storage/logo/original-logo.webp')}}"
+                        src="{{asset('storage/sjmc.png')}}"
                         alt="Balagbag"
-                        class="flex  w-full items-center justify-center -mt-48 rounded-lg"
+                        class="flex  w-full items-center justify-center -mt-24 rounded-lg"
                         /></div>
                     <div
                         class="box sm:left-[125px] xs:left-[75px] [transform:rotateY(90deg)]">
                         <img
-                        src="{{asset('storage/logo/bpc.webp')}}"
+                        src="{{asset('storage/sjmc.png')}}"
                         alt="Balagbag"
                         class="flex  w-full items-center justify-center -mt-24 rounded-lg"
                         /></div>
                     <div
                         class="box sm:bottom-[125px] xs:bottom-[75px] [transform:rotateX(90deg)]">
                         <img
-        src="{{asset('storage/logo/calabarzon.webp')}}"
+        src="{{asset('storage/sjmc.png')}}"
         alt="Balagbag"
         class="flex  w-full items-center justify-center -mt-24 rounded-lg"
         /></div>
