@@ -27,7 +27,7 @@
                         <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
 
                     @else
-                        <a href="{{ route('login') }}" wire:navigate  class="mr-10 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+                        <a href="{{ route('login') }}" wire:navigate  class="mr-10 font-semibold text-white hover:text-yellow-500 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
 
                         {{-- @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
@@ -137,14 +137,14 @@
             </div> --}}
             <div class="w-full mx-auto h-screen [perspective:1000px] bg-black">
                 <div
-                    class="font-sans sm:h-[250px] sm:w-[250px] xs:h-[150px] xs:w-[150px] absolute sm:top-[30%] sm:left-[30%] xs:top-[40%] xs:left-[30%] [transform-style:preserve-3d] animate-[roll_5s_infinite]">
+                    class="font-sans sm:h-[250px] sm:w-[250px] xs:h-[150px] xs:w-[150px] absolute sm:top-[30%] sm:left-[30%] xs:top-[40%] xs:left-[30%] [transform-style:preserve-3d] animate-[roll_20s_infinite]">
                     <div
                         class="box sm:[transform:translateZ(125px)] xs:[transform:translateZ(75px)]">
                         <img
-        src="{{asset('storage/sjmc.png')}}"
-        alt="SJMC"
-        class="flex  w-full items-center justify-center -mt-24 rounded-lg"
-        /></div>
+                            src="{{asset('storage/sjmc.png')}}"
+                            alt="SJMC"
+                            class="flex  w-full items-center justify-center -mt-24 rounded-lg"
+                            /></div>
                     <div
                         class="box sm:[transform:translateZ(-125px)] xs:[transform:translateZ(-75px)]">
                         Back</div>
@@ -165,13 +165,17 @@
                     <div
                         class="box sm:bottom-[125px] xs:bottom-[75px] [transform:rotateX(90deg)]">
                         <img
-        src="{{asset('storage/sjmc.png')}}"
-        alt="Balagbag"
-        class="flex  w-full items-center justify-center -mt-24 rounded-lg"
-        /></div>
+                        src="{{asset('storage/sjmc.png')}}"
+                        alt="Balagbag"
+                        class="flex  w-full items-center justify-center -mt-24 rounded-lg"
+                        /></div>
                     <div
                         class="box sm:top-[125px] xs:top-[75px] [transform:rotateX(-90deg)]">
-                        Bottom</div>
+                        <img
+                        src="{{asset('storage/sjmc.png')}}"
+                        alt="Balagbag"
+                        class="flex  w-full items-center justify-center -mt-24 rounded-lg"
+                        /></div>
                 </div>
             </div>
 
