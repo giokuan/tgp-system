@@ -1,12 +1,14 @@
-{{-- <div>
-    <h2>Member Details</h2>
-    <p>ID: {{ $member->id }}</p>
-    <p>Name: {{ $member->first_name }} {{ $member->last_name }}</p>
-    <p>Email: {{ $member->email }}</p>
-
-</div> --}}
 
 <div>
+
+             <!-- Skeleton Loader -->
+             <div wire:loading class="flex w-52 flex-col gap-4">
+                <div class="skeleton h-32 w-full"></div>
+                <div class="skeleton h-4 w-28"></div>
+                <div class="skeleton h-4 w-full"></div>
+                <div class="skeleton h-4 w-full"></div>
+            </div>
+            
     <div class="container p-5 mx-auto my-5 dark:bg-dark-eval-1">
         <div class="md:flex no-wrap md:-mx-2">
     

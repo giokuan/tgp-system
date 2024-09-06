@@ -13,14 +13,27 @@ class ViewMember extends Component
     
     public $member;
 
-    public function mount($id)
-    {
-        $this->member = Member::find($id);
+    // public function mount($id)
+    // {
+    //     $this->member = Member::find($id);
 
-        if (!$this->member) {
-            return redirect()->back()->with('error', 'Member not found.');
-        }
+    //     if (!$this->member) {
+    //         return redirect()->back()->with('error', 'Member not found.');
+    //     }
+    // }
+
+
+    public function mount($id)
+{
+    $this->member = cache()->remember("member-{$id}", 60, function () use ($id) {
+        return Member::find($id);
+    });
+
+    if (!$this->member) {
+        return redirect()->back()->with('error', 'Member not found.');
     }
+}
+
 
     public function render()
     {

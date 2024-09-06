@@ -144,7 +144,7 @@ final class MemberTable extends PowerGridComponent
         ];
     }
 
-    #[\Livewire\Attributes\On('edit')]
+    #[\Livewire\Attributes\On('view')]
     public function edit($rowId): void
     {
         $this->redirect(route('member-view', ['id' => $rowId]));
@@ -157,11 +157,11 @@ final class MemberTable extends PowerGridComponent
     public function actions(Member $row): array
     {
         return [
-            Button::add('edit')
+            Button::add('view')
                 ->slot('VIEW')
                 ->id()
                 ->class(' px-8 rounded-lg border p-2 text-black dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->dispatch('edit', ['rowId' => $row->id])
+                ->dispatch('view', ['rowId' => $row->id])
        
              
         ];
